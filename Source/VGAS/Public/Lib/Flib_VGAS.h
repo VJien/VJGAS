@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "Component/VGAbilitySystemComponent.h"
+#include "VGASDefine.h"
 #include "Flib_VGAS.generated.h"
 
 
@@ -28,7 +29,16 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "VGAS | FunctionLib", meta = (AutoCreateRefTerm = "WithoutTags, WithTags"))
 		static void CancelAbilitySpec(UAbilitySystemComponent* AbilityComponent, const FGameplayAbilitySpec& Spec, UGameplayAbility* Ignore);
 
-	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "VGAS | FunctionLib", meta = (AutoCreateRefTerm = "GameplayTagContainer, WithTags"))
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "VGAS | FunctionLib", meta = (AutoCreateRefTerm = ""))
 		static void GetActivatableGameplayAbilitySpecsByAllMatchingTags(UAbilitySystemComponent* AbilityComponent, const FGameplayTagContainer& GameplayTagContainer, TArray < struct FGameplayAbilitySpec >& MatchingGameplayAbilities, bool bOnlyAbilitiesThatSatisfyTagRequirements);
-
+	
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "VGAS | FunctionLib", meta = (AutoCreateRefTerm = ""))
+		static FVGASpec BreakGASpec(const FGameplayAbilitySpec& Spec);
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "VGAS | FunctionLib", meta = (AutoCreateRefTerm = ""))
+		static FGameplayAbilitySpec MakeGASpec(FVGASpec Spec);
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "VGAS | FunctionLib", meta = (AutoCreateRefTerm = ""))
+		static FVGESpec BreakGESpec(const FGameplayEffectSpec& s);
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "VGAS | FunctionLib", meta = (AutoCreateRefTerm = ""))
+		static FGameplayEffectSpec MakeGESpec(FVGESpec s);
 };
+
