@@ -7,7 +7,7 @@
 #include "AbilitySystemInterface.h"
 #include "VGCharacterBase.generated.h"
 
-
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnKillOthers,AActor*, Actor);
 
 UCLASS()
 class VGAS_API AVGCharacterBase : public ACharacter, public IAbilitySystemInterface
@@ -82,4 +82,9 @@ public:
 	//初始应用的GE效果
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "VGAS | Abilities")
 		TArray<TSubclassOf<class UGameplayEffect>> StartupEffects;
+
+
+
+	UPROPERTY(BlueprintCallable,BlueprintAssignable)
+		FOnKillOthers	OnKillEnmey;
 };

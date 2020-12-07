@@ -91,3 +91,8 @@ FGameplayEffectSpec UFlib_VGAS::MakeGESpec(FVGESpec s)
 	return sp;
 }
 
+float UFlib_VGAS::GetEffectLevel(const FGameplayEffectSpec& spec)
+{
+	return spec.GetLevel();
+}
+

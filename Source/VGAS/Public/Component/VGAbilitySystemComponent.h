@@ -9,6 +9,9 @@
 /**
  * 
  */
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnRecieveDamage, UVGAbilitySystemComponent*, AbilityComponent, float, Damage);
+
 UCLASS()
 class VGAS_API UVGAbilitySystemComponent : public UAbilitySystemComponent
 {
@@ -16,6 +19,8 @@ class VGAS_API UVGAbilitySystemComponent : public UAbilitySystemComponent
 public:
 	virtual void LocalInputConfirm()override;
 
+	UPROPERTY(BlueprintCallable,BlueprintAssignable)
+	FOnRecieveDamage OnRecieveDamage;
 
 	bool bHasApplyStartupEffects =  false;
 	bool bHasGiveCharacterAbilities = false;
