@@ -74,7 +74,7 @@ void AVGHero::BindASCInput()
 {
 	if (!bHasBindInput && AbilitySystemComponent.IsValid() && InputComponent)
 	{
-		AbilitySystemComponent->BindAbilityActivationToInputComponent(InputComponent, FGameplayAbilityInputBinds(TEXT(""), TEXT(""),
+		AbilitySystemComponent->BindAbilityActivationToInputComponent(InputComponent, FGameplayAbilityInputBinds(TEXT("CONFIRM"), TEXT("CANCEL"),
 			TEXT("EVGAbilityInputID"), static_cast<int32>(EVGAbilityInputID::CONFIRM), static_cast<int32>(EVGAbilityInputID::CANCEL)));
 		bHasBindInput = true;
 	}

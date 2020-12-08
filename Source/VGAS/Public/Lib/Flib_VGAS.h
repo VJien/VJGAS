@@ -44,5 +44,19 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "VGAS | Effect", meta = (AutoCreateRefTerm = ""))
 		static float GetEffectLevel(const FGameplayEffectSpec& spec);
+
+
+	UFUNCTION(BlueprintCallable, Category = "VGAS | GameplayCue", Meta = (AutoCreateRefTerm = "GameplayCueParameters", GameplayTagFilter = "GameplayCue"))
+		static void ExecuteGameplayCueLocal(UAbilitySystemComponent* AbilityComponent, const FGameplayTag GameplayCueTag, const FGameplayCueParameters& GameplayCueParameters);
+	
+	UFUNCTION(BlueprintCallable, Category = "VGAS | GameplayCue", Meta = (AutoCreateRefTerm = "GameplayCueParameters", GameplayTagFilter = "GameplayCue"))
+		static void AddGameplayCueLocal(UAbilitySystemComponent* AbilityComponent, const FGameplayTag GameplayCueTag, const FGameplayCueParameters& GameplayCueParameters);
+
+	UFUNCTION(BlueprintCallable, Category = "VGAS | GameplayCue", Meta = (AutoCreateRefTerm = "GameplayCueParameters", GameplayTagFilter = "GameplayCue"))
+		static void RemoveGameplayCueLocal(UAbilitySystemComponent* AbilityComponent, const FGameplayTag GameplayCueTag, const FGameplayCueParameters& GameplayCueParameters);
+
+
+
+
 };
 

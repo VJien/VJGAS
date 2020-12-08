@@ -2,6 +2,10 @@
 
 
 #include "Lib/Flib_VGAS.h"
+#include "AbilitySystemComponent.h"
+#include "AbilitySystemGlobals.h"
+#include "GameplayAbilitiesModule.h"
+#include "GameplayCueManager.h"
 
 
 
@@ -94,5 +98,22 @@ FGameplayEffectSpec UFlib_VGAS::MakeGESpec(FVGESpec s)
 float UFlib_VGAS::GetEffectLevel(const FGameplayEffectSpec& spec)
 {
 	return spec.GetLevel();
+}
+
+void UFlib_VGAS::ExecuteGameplayCueLocal(UAbilitySystemComponent* AbilityComponent, const FGameplayTag GameplayCueTag, const FGameplayCueParameters& GameplayCueParameters)
+{
+
+	UAbilitySystemGlobals::Get().GetGameplayCueManager()->HandleGameplayCue(AbilityComponent->GetOwner(), GameplayCueTag, EGameplayCueEvent::Type::Executed, GameplayCueParameters);
+}
+
+void UFlib_VGAS::AddGameplayCueLocal(UAbilitySystemComponent* AbilityComponent, const FGameplayTag GameplayCueTag, const FGameplayCueParameters& GameplayCueParameters)
+{
+	UAbilitySystemGlobals::Get().GetGameplayCueManager()->HandleGameplayCue(AbilityComponent->GetOwner(), GameplayCueTag, EGameplayCueEvent::Type::OnActive, GameplayCueParameters);
+	UAbilitySystemGlobals::Get().GetGameplayCueManager()->HandleGameplayCue(AbilityComponent->GetOwner(), GameplayCueTag, EGameplayCueEvent::Type::WhileActive, GameplayCueParameters);
+}
+
+void UFlib_VGAS::RemoveGameplayCueLocal(UAbilitySystemComponent* AbilityComponent, const FGameplayTag GameplayCueTag, const FGameplayCueParameters& GameplayCueParameters)
+{
+	UAbilitySystemGlobals::Get().GetGameplayCueManager()->HandleGameplayCue(AbilityComponent->GetOwner(), GameplayCueTag, EGameplayCueEvent::Type::Removed, GameplayCueParameters);
 }
 
